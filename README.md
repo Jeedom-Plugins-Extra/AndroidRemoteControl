@@ -1,75 +1,21 @@
-# Plugin AndroidRemoteControl pour Jeedom
 
-<img src="doc/images/AndroidRemoteControl_icon.png" align="right">
+[![license](https://img.shields.io/github/license/NextDom/plugin-AndroidRemoteControl.svg)](./LICENSE) [![GitHub contributors](https://img.shields.io/github/contributors/NextDom/plugin-AndroidRemoteControl.svg)](../../graphs/contributors) [![GitHub release](https://img.shields.io/github/release/NextDom/plugin-AndroidRemoteControl.svg)](../../releases) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/byackee) [![Waffle.io - Columns and their card count](https://badge.waffle.io/NextDom/plugin-AndroidRemoteControl.svg?columns=all)](https://waffle.io/NextDom/plugin-AndroidRemoteControl)
 
-Piloter les terminaux android (TV, Shield, freebox mini 4k, etc..)
+### Master: [![Build Status](https://travis-ci.org/NextDom/plugin-AndroidRemoteControl.svg?branch=master)](https://travis-ci.org/NextDom/plugin-AndroidRemoteControl)  [![Coverage Status](https://coveralls.io/repos/github/NextDom/plugin-AndroidRemoteControl/badge.svg?branch=master)](https://coveralls.io/github/NextDom/plugin-AndroidRemoteControl?branch=master)
+
+### Develop: [![Build Status](https://travis-ci.org/NextDom/plugin-AndroidRemoteControl.svg?branch=develop)](https://travis-ci.org/NextDom/plugin-AndroidRemoteControl)  [![Coverage Status](https://coveralls.io/repos/github/NextDom/plugin-AndroidRemoteControl/badge.svg?branch=develop)](https://coveralls.io/github/NextDom/plugin-AndroidRemoteControl?branch=develop)
+
+# Présentation:
+
+Plugin permettant de controler les appareils Android ( Android TV, smartphones, freebox 4k, etc..)
+
+# Documentation du plugin:
+[![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](docs/fr_FR/presentation.md)
+[présentation](docs/fr_FR/presentation.md) [configuration](docs/fr_FR/configuration.md) [faq](docs/fr_FR/faq.md) [changelog](docs/fr_FR/changelog.md)
+
+# Documentation complète:
+
+[![Read the Docs](plugin_info/AndroidRemoteControl_icon.png)](https://NextDom.github.io/plugin-AndroidRemoteControl)
 
 
-### Market
-
-Retrouvez le [Market page](https://www.jeedom.com/market/index.php?v=d&p=market&type=plugin&&name=AndroidRemoteControl)
-
-
-### Documentation
-
-Vous trouverez la documentation [ici](https://github.com/Jeedom-Plugins-Extra/AndroidRemoteControl/blob/stable/doc/fr_FR/index.asciidoc)
-
-<img src="doc/images/AndroidRemoteControl_screenshot1.png" align="center">
-
-
-### Fonctions disponibles
-
-Infos:
-powerstate
-App encours
-volume
-liste appli
-ifconfig
-
-Actions:
-connect, disconnect
-home
-power on, power off
-wakeup
-mute, unmute
-volume+, volume-, volume xx
-up, down, left, right
-back
-click, enter
-brightness+, brightness-
-start, play, pause, stop
-previous, next
-okgoogle
-cherche, texte
-youtube, francetv, plex, spotify, vlc, tf1, google, facebook, molotov, netflix
-
-Scénarios possible (ceux que j'ai chez moi):
-Allumer la box -> lancer molotov -> play avec commande vocale google home/ifttt (ex: "ok google, met la télé en route").
-Commander l'allumage de l'ampli (Yamaha dans mon cas) lorsque la box est allumé (car parfois le HDMI CEC).
-Si netflix lancé -> lumière salon a 50%
-
-Installation:
-sur jeedom il faut installer:
-Code : Tout sélectionner
-
-sudo apt-get install android-tools-adb
-Avant la 1ere commande il faut connecter jeedom a votre box, pour cela dans votre équipements (script) il faut créer une commande connect avec pour action:
-Code : Tout sélectionner
-
-/var/www/html/plugins/script/core/ressources/ADB.sh action connect 1192.168.x.x
-Vous pouvez ensuite utiliser les autres commandes comme bon vous semble :)
-
-Conseils:
-Il faut créer un scénario au démarrage de jeedom qui lance la commande connect, vous n'aurez plus a vous soucier de cela apres.
-Code : Tout sélectionner
-
-- Nom du scénario : launch_adb
-- Objet parent : System
-- Mode du scénario : provoke
-    - Evènement : #start#
-    - Evènement : #[Salon][Shield][Encours]#
-    
-    SI #[Salon][Shield][Encours]# == "error: device not found"  
-    ALORS
-     #[Salon][Shield][Connect]# - Options : {"background":"0","enable":"1"}
-    SINON
+[![Support via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.me/byackee/) [![Join the chat at https://gitter.im/NextDom/plugin-AndroidRemoteControl](https://badges.gitter.im/NextDom/plugin-AndroidRemoteControl.svg)](https://gitter.im/NextDom/plugin-AndroidRemoteControl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
